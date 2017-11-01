@@ -34,6 +34,7 @@ class PrePro:
 		self.GenBranchs(self.start,self.end,self.min,self.max,'')
 		self.Makelists()
 		return(self.Prunedlst)
+print('tryinghard')
 ST = PrePro(0,500,30,65)
 Data=ST.Prune()
 text_file = open("Output.txt_2", "w")
