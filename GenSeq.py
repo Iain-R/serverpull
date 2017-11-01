@@ -1,45 +1,18 @@
-class PrePro:
-	def __init__(self,start,end,min,max):
-		self.start = start
-		self.end = end
-		self.min = min
-		self.max = max
-		self.Prunedstr = []
-		self.Prunedlst = []
+def subset_sum(numbers, target, partial=[], partial_sum=0):
+    if partial_sum == target:
+        yield partial
+    if partial_sum >= target:
+        return
+    for i, n in enumerate(numbers):
+        remaining = numbers[i + 1:]
+        yield from subset_sum(remaining, target, partial + [n], partial_sum + n)
 
-	def GenBranchs(self,current,end,min,max,past):
-	# count = count+1
-	# print(count)
-		if current == end :
-			past+''
-			self.Prunedstr.append(past)
-			past = ''
-			return 1
-		if current>end:
-			past = ''
-			return -1
-		for i in range(min,max):
-			pred = past + ','+str(i)
-			self.GenBranchs(current+i, end, min, max,pred)
-		return 0
-
-	def Makelists(self):
-		for i in range(len(self.Prunedstr)):
-			temp = self.Prunedstr[i]
-			temp = temp[1:]
-			templst = [int(x) for x in temp.split(',')]
-			self.Prunedlst.append(templst) #These are by definition all unique 
-
-	def Prune(self):
-		self.GenBranchs(self.start,self.end,self.min,self.max,'')
-		self.Makelists()
-		return(self.Prunedlst)
-print('tryinghard')
-ST = PrePro(0,500,30,65)
-Data=ST.Prune()
-print("Writing")
-text_file = open("Output.txt_2", "w")
-text_file.write(str(Data))
+A = subset_sum([i for i in range(30,65)], 500)
+text_file = open("Sequences.txt", "w")
+x=0
+for i in A:
+	x+=0
+	text_file.write(str(i))
+	
 text_file.close()
-print("Done")
-    
+	# print(i)
