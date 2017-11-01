@@ -37,7 +37,9 @@ class PrePro:
 print('tryinghard')
 ST = PrePro(0,500,30,65)
 Data=ST.Prune()
+print("Writing")
 text_file = open("Output.txt_2", "w")
 text_file.write(str(Data))
 text_file.close()
+print("Done")
     
